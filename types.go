@@ -2,6 +2,7 @@ package staytus
 
 import "time"
 
+//Staytus is the main type that allows you to interact with Staytus API
 type Staytus struct {
 	BaseURL string
 	Token   string

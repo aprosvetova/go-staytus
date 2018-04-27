@@ -75,8 +75,8 @@ func (api *Staytus) post(path string, body []byte) ([]byte, error) {
 		for field, error := range fields {
 			fieldErrors = append(fieldErrors, fmt.Sprintf("%s - %s", field, error))
 		}
-		return nil, errors.New(fmt.Sprintf("%s: %s", status, strings.Join(fieldErrors, ",")))
+		return nil, fmt.Errorf("%s: %s", status, strings.Join(fieldErrors, ","))
 	}
 	errorMessage := gjson.Get(string(bodyBuf), "data.message")
-	return nil, errors.New(fmt.Sprintf("%s: %s", status, errorMessage.String()))
+	return nil, fmt.Errorf("%s: %s", status, errorMessage.String())
 }
